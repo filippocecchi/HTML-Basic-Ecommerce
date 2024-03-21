@@ -1,0 +1,184 @@
+<html>
+	<head>       
+	<script>
+		var t="";
+		function creatabella()
+		{
+			for(var i=0;i<26;i++)
+			{
+				t=t+"<tr>";	
+				for(var j=0;j<40;j++)
+				{
+					if(i>0&&i<25&&j>0&&j<39)
+					{
+						if(i==1&&j==1)
+						{
+							t=t+"<td id='"+i+"_"+j+"' colspan='38' rowspan='24'></td>";
+						}
+						else
+						{
+						
+						}
+					}
+					else
+					{
+						t=t+"<td id='"+i+"_"+j+"' width='5'></td>";
+					}
+				}
+				t=t+"</tr>";
+			}
+			clearInterval(x);
+			document.getElementById("tabella").innerHTML=""+t+"";
+			document.getElementById("1_1").bgColor="navy";
+			document.getElementById("1_1").align="center";
+			document.getElementById("1_1").innerHTML="<a href='giocofacoltativo.html'><font size='6'>Prova a vincere un buono da 20€</font></a>";
+			document.getElementById("0_0").bgColor="red";
+			document.getElementById("0_39").bgColor="red";
+			document.getElementById("25_39").bgColor="red";
+			document.getElementById("25_0").bgColor="red";
+			setInterval(muovi,100);
+		}
+		var pos=[0,0];
+		var pos2=[0,39];
+		var pos3=[25,39];
+		var pos4=[25,0];
+		var dir=[0,1];
+		var dir2=[1,0];
+		var dir3=[0,-1];
+		var dir4=[-1,0];
+		function muovi()
+		{
+			if(pos[0]==25&&pos[1]>=0||pos[0]>=0&&pos[1]==0)
+			{
+				document.getElementById(pos[0]+"_"+pos[1]).bgColor="white";
+			}
+			else
+			{
+				document.getElementById(pos[0]+"_"+pos[1]).bgColor="black";
+			}
+			pos[0]=pos[0]+dir[0];
+			pos[1]=pos[1]+dir[1];
+			document.getElementById(pos[0]+"_"+pos[1]).bgColor="red";
+		    if(pos[0]==0 && pos[1]==39)
+			{
+				dir[0]=1;
+				dir[1]=0;
+			}
+			if(pos[0]==25 && pos[1]==39)
+			{
+				dir[0]=0;
+				dir[1]=-1;
+			}
+			if(pos[0]==25 && pos[1]==0)
+			{
+				dir[0]=-1;
+				dir[1]=0;
+			}
+			if(pos[0]==0 && pos[1]==0)
+			{
+				dir[0]=0;
+				dir[1]=1;
+			}
+			if(pos2[0]>=0&&pos2[1]==0||pos2[0]==0&&pos2[1]<=39)
+			{
+				document.getElementById(pos2[0]+"_"+pos2[1]).bgColor="white";
+			}
+			else
+			{
+				document.getElementById(pos2[0]+"_"+pos2[1]).bgColor="black";
+			}
+			pos2[0]=pos2[0]+dir2[0];
+			pos2[1]=pos2[1]+dir2[1];
+			document.getElementById(pos2[0]+"_"+pos2[1]).bgColor="red";
+		    if(pos2[0]==0 && pos2[1]==39)
+			{
+				dir2[0]=1;
+				dir2[1]=0;
+			}
+			if(pos2[0]==25 && pos2[1]==39)
+			{
+				dir2[0]=0;
+				dir2[1]=-1;
+			}
+			if(pos2[0]==25 && pos2[1]==0)
+			{
+				dir2[0]=-1;
+				dir2[1]=0;
+			}
+			if(pos2[0]==0 && pos2[1]==0)
+			{
+				dir2[0]=0;
+				dir2[1]=1;
+			}
+			if(pos3[0]==0&&pos3[1]<=39||pos3[0]<=25&&pos3[1]==39)
+			{
+				document.getElementById(pos3[0]+"_"+pos3[1]).bgColor="white";
+			}
+			else
+			{
+				document.getElementById(pos3[0]+"_"+pos3[1]).bgColor="black";
+			}
+			pos3[0]=pos3[0]+dir3[0];
+			pos3[1]=pos3[1]+dir3[1];
+			document.getElementById(pos3[0]+"_"+pos3[1]).bgColor="red";
+		    if(pos3[0]==0 && pos3[1]==39)
+			{
+				dir3[0]=1;
+				dir3[1]=0;
+			}
+			if(pos3[0]==25 && pos3[1]==39)
+			{
+				dir3[0]=0;
+				dir3[1]=-1;
+			}
+			if(pos3[0]==25 && pos3[1]==0)
+			{
+				dir3[0]=-1;
+				dir3[1]=0;
+			}
+			if(pos3[0]==0 && pos3[1]==0)
+			{
+				dir3[0]=0;
+				dir3[1]=1;
+			}
+			if(pos4[0]<=25&&pos4[1]==39||pos4[0]==25&&pos4[1]>=0)
+			{
+				document.getElementById(pos4[0]+"_"+pos4[1]).bgColor="white";
+			}
+			else
+			{
+				document.getElementById(pos4[0]+"_"+pos4[1]).bgColor="black";
+			}
+			pos4[0]=pos4[0]+dir4[0];
+			pos4[1]=pos4[1]+dir4[1];
+			document.getElementById(pos4[0]+"_"+pos4[1]).bgColor="red";
+		    if(pos4[0]==0 && pos4[1]==39)
+			{
+				dir4[0]=1;
+				dir4[1]=0;
+			}
+			if(pos4[0]==25 && pos4[1]==39)
+			{
+				dir4[0]=0;
+				dir4[1]=-1;
+			}
+			if(pos4[0]==25 && pos4[1]==0)
+			{
+				dir4[0]=-1;
+				dir4[1]=0;
+			}
+			if(pos4[0]==0 && pos4[1]==0)
+			{
+				dir4[0]=0;
+				dir4[1]=1;
+			}
+		}
+		var x;
+		x=setInterval(creatabella,1);
+	</script>
+	</head>
+	<body vlink="white">	
+		<table id="tabella" width="30%" height="40%" border="0" cellspacing="0">
+		</table>
+	</body>
+</html>

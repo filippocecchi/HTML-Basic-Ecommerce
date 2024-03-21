@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<script>
+		function cambia(val)
+		{
+			if(val==1)
+			 document.getElementById("foto").src="a londra.jpg";
+			if(val==2)
+			 document.getElementById("foto").src="a tokyo.jpg";
+			if(val==3)
+			 document.getElementById("foto").src="a los angeles.jpg";
+			if(val==4)
+			 document.getElementById("foto").src="3.jpg";
+		}
+		</script>
+	</head>
+	<title>E-commerce</title>
+	<body background="sfondo chiaro.jpg" link="black" vlink="black">
+		<table align="center" width="100%" height="130%"border="1">
+			 <tr align="center" height="10%">
+				<td><img src="online-shop.png" width="130"/></td>
+				<td><img src="index.png" width="400"/></td>
+				<td><a href="form.html"><img src="images.png" width="100" title="Acquista"/></a></td>
+			 </tr>
+			 <tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			 </tr>
+			 <tr align="center">
+				<td width="5%" align="left"valign="top"><br/><br/>
+					<h3><font face="verdana">Menù</font></h3><hr width="50%">
+					<ul type="disc">
+						<li><a href="Homepage.html">Homepage</a></li>
+						<li><a href="chisiamo.html">Chi siamo</a></li>
+						<li><a href="offertespeciali.html">Offerte speciali</a></li>
+						<li><a href="form.html">Acquista</a></li>
+					</ul>
+				</td>
+				<td width="70%" align="center">
+					<table width="100%" height="100%" border="0" cellspacing="5">
+						<tr height="50%">
+							<td width="50%" valign="top"><font size="7"><b>Chi siamo:</b></font></br><font align="justify" size="6">Siamo un'azienda fondata nel 2010 che si occupa di vendita online di computer, accessori e dispositivi elettronici di ogni genere. La nostra sede principale si trova a Milano, ma altre numerosi sedi sono state aperte in paesi esteri quali Giappone, USA, Inghilterra. Ad oggi contiamo un numero di 20000 dipendenti in tutto il mondo. La fase logistica della spedizione è interamente gestita da noi e quindi ogni prodotto acquistato gode della possibilità di reso entro 15 giorni dalla consegna e di regolare garanzia. Per qualsiasi tipo di informazione potete contattare telefonicamente o tramite mail la nostra segreteria, i recapiti li potete trovare in fondo alla pagina.</font></td>
+							<td width="50%"><img src="1.jpg" width="100%" border="1"/></td>
+						</tr>
+						<tr height="50%">
+							<td width="50%">
+							<ul>
+								<font size="6">
+								<li>20000 dipendenti assicurati</li>
+								<li>utilizzo di fonti energetiche rinnovabili</li>
+								<li>imballaggi fabbricati con materiale 100% riciclato</li>
+								<li>garanzia di due anni garantita</li>
+								<li>consegna entro 5 giorni lavorativi</li>
+								<li>possibilità di reso entro 15 giorni</li>
+								<li>sconti su tantissimi dei nostri prodotti</li>
+								</font>
+							</ul>
+							</td>
+							<td width="50%""><img src="3.jpg" id="foto" width="100%" border="1"/></td>
+						</tr>
+					</table>
+				</td>
+				<td width="5%" valign="top" align="left">
+					<table height="100%" width="100%" border="0">
+						<tr>
+							<td valign="bottom"><font size="4"><b>Londra:</b></font></td>
+						</tr>
+						<tr>
+							<td valign="top"><img src="a londra.jpg" width="100%" onclick="cambia(1)"/></td>
+						</tr>
+						<tr>
+							<td valign="bottom"><font size="4"><b>Tokyo:</b></font></td>
+						</tr>
+						<tr>
+							<td valign="top"><img src="a tokyo.jpg" width="100%" onclick="cambia(2)"/></td>
+						</tr>
+						<tr>
+							<td valign="bottom"><font size="4"><b>Los Angeles:</b></font></td>
+						</tr>
+						<tr>
+							<td valign="top"><img src="a los angeles.jpg" width="100%" onclick="cambia(3)"/></td>	
+						</tr>
+						<tr>
+							<td valign="bottom"><font size="4"><b>Milano:</b></font></td>
+						</tr>
+						<tr>
+							<td valign="top"><img src="3.jpg" width="100%" onclick="cambia(4)"/></td>	
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			</tr>
+			<tr align="center">
+				<td colspan="3" height="3%">Telefono: +39.333 3333333 dalle 8.30 alle 12.30 e dalle 14.30 alle 18.30 - dal lunedi al venerdi, sede centrale: Via Settembrini, MI E-mail:  e-commerce@gmail.com</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,295 @@
+<html>
+	<head>
+	<script>
+		var h=2,m=15,s=5; <!-- è possibile impostare il tempo del timer-->
+		function timer()
+		{
+			if(h!=0&&m==0&&s==0)
+			{
+				h=h-1;
+				m=59;
+				s=59;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h==0&&m!=0&&s!=0)
+			{
+				s=s-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h==0&&m!=0&&s==0)
+			{
+				s=60;
+				m=m-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h!=0&&m!=0&&s!=0)
+			{
+				s=s-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h!=0&&m!=0&&s==0)
+			{
+				s=60;
+				m=m-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h!=0&&m==0&&s!=0)
+			{
+				s=s-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h==0&&m==0&&s!=0)
+			{
+				s=s-1;
+				document.getElementById("testo").innerHTML="Tempo rimanente:"+h+":"+m+"."+s+"";
+				return;
+			}
+			if(h==0&&m==0&&s==0)
+			{
+				clearInterval(x);
+				document.getElementById("samsung").innerHTML="";
+				document.getElementById("prezzo").innerHTML="Tempo scaduto";
+			}	
+		}
+		var ore=0,minuti=0,secondi=30;
+		function countdown()
+		{
+			if(ore!=0&&minuti==0&&secondi==0)
+			{
+				ore=ore-1;
+				minuti=59;
+				secondi=59;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore==0&&minuti!=0&&secondi!=0)
+			{
+				secondi=secondi-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore==0&&minuti!=0&&secondi==0)
+			{
+				secondi=60;
+				minuti=minuti-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore!=0&&minuti!=0&&secondi!=0)
+			{
+				secondi=secondi-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore!=0&&minuti!=0&&secondi==0)
+			{
+				secondi=60;
+				minuti=minuti-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore!=0&&minuti==0&&secondi!=0)
+			{
+				secondi=secondi-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore==0&&minuti==0&&secondi!=0)
+			{
+				secondi=secondi-1;
+				document.getElementById("conta").innerHTML="Tempo rimanente:"+ore+":"+minuti+"."+secondi+"";
+				return;
+			}
+			if(ore==0&&minuti==0&&secondi==0)
+			{
+				clearInterval(y);
+				document.getElementById("bose").innerHTML="";
+				document.getElementById("fine").innerHTML="Tempo scaduto";
+			}
+		}
+		var y;
+		y=setInterval(countdown,1000);	
+		var x,t="",somma=0,cont=0;
+		x=setInterval(timer,1000);
+		function rimuovi(pos,prezzo)
+		{
+			document.getElementById(""+pos+"").innerHTML="";
+			somma=somma-prezzo;
+			document.getElementById("tot").innerHTML="Totale= "+somma+"";
+		}
+		function creacarrello(val)
+		{
+			cont=cont+1;
+			if(val==0)
+			{
+			  t="computer lenovo</br><font onclick='rimuovi("+cont+",399)' size='2'>rimuovi</font>";
+			  somma=somma+399.00;
+			}	
+			if(val==1)
+			{
+			  t="samsung s10</br><font onclick='rimuovi("+cont+",299)' size='2'>rimuovi</font>";
+			  somma=somma+299.00;
+			}	
+			if(val==2)
+			{
+			  t="aspirapolvere</br><font onclick='rimuovi("+cont+",249)' size='2'>rimuovi</font>";
+			  somma=somma+249.00;
+			}
+			if(val==3)
+			{
+			 t="cassa bose</br><font onclick='rimuovi("+cont+",39)' size='2'>rimuovi</font>";
+			 somma=somma+39.00;
+			}
+			document.getElementById("carrello").innerHTML+="<font id='"+cont+"'><table width='100%' height='40' border='1'><tr><td>"+t+"</td></tr></table></font>";
+			document.getElementById("tot").innerHTML="Totale= "+somma+"";
+		}
+		var conts=0,contc1=1,contc2=2,contd=3;
+		var v=["<img width='120' src='bose.png'/>","<img width='120' src='fotocamera.png'/>","<img width='120' src='microfono.png'/>","<img width='120' src='minecraft.png'/>","<img width='120' src='mouse.png'/>","<img width='120' src='sedia.png'/>","<img width='120' src='tappetino.png'/>","<img width='120' src='tastiera.png'/>"];
+		function cambia()
+		{		
+			if(conts==7)
+			{
+				conts=0;
+			}
+			else
+			{
+				conts=conts+1;
+			}
+			if(contc1==7)
+			{
+				contc1=0;
+			}
+			else
+		    {
+				contc1=contc1+1;
+			}
+			if(contc2==7)
+			{
+				contc2=0;
+			}
+			else
+			{
+				contc2=contc2+1;
+			}
+			if(contd==7)
+			{
+				contd=0;
+			}
+			else
+			{
+				contd=contd+1;
+			}
+			document.getElementById("sinistra").innerHTML=""+v[conts]+"";
+			document.getElementById("centro").innerHTML=""+v[contc1]+"";
+			document.getElementById("centro2").innerHTML=""+v[contc2]+"";
+			document.getElementById("destra").innerHTML=""+v[contd]+"";	
+		}
+		setInterval(cambia,2000);		
+	</script>
+	</head>
+	<title>E-commerce</title>
+	<body background="sfondo chiaro.jpg" link="black" vlink="black">
+		<table align="center" width="100%" height="130%"border="1">
+			 <tr align="center" height="10%">
+				<td><img src="online-shop.png" width="130"/></td>
+				<td><img src="index.png" width="400"/></td>
+				<td><a href="form.html"><img src="images.png" width="100" title="Acquista"/></a></td>
+			 </tr>
+			 <tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			 </tr>
+			 <tr align="center">
+				<td width="5%" align="left"valign="top"><br/><br/>
+					<h3><font face="verdana">Menù</font></h3><hr width="50%">
+					<ul type="disc">
+						<li><a href="Homepage.html">Homepage</a></li>
+						<li><a href="chisiamo.html">Chi siamo</a></li>
+						<li><a href="offertespeciali.html">Offerte speciali</a></li>
+						<li><a href="form.html">Acquista</a></li>
+					</ul>
+				</td>
+				<td width="70%" align="center">
+					<table width="100%" border="1" height="100%">
+						<tr align="center" height="8%">
+							<td><font size="6">OFFERTE SPECIALI:</font></td>
+							<td><font size="6">OFFERTE LAMPO:</font></td>
+						</tr>
+						<tr align="center">
+							<td align="left" width="50%"><img src="computer.png" width="295" hspace="15" align="left"/><font size="5"><b>Computer lenovo:</b></font></br>
+								<font size="4">Ultimo modello con specifiche di ultima generazione</font></br>
+								<ul>
+									<li>Porcessore I7</li><li>1 Tb di hard disk</li>
+									<li> 8 Gb di ram DDR4</li>
+								</ul></br>Prezzo originale: 699€</br>Prezzo al 50%: <font size="5"><b>399€</b></font></br></br>
+								<input type="button" value="aggiungi al carrello" onclick="creacarrello(0)"/>
+							</td>
+							<td align="left" width="50%"><img src="samsung.png" width="290" hspace="15" align="left"/><font size="5"><b>Samsung S10 plus:</b></font></br>
+								<font size="4">Top di gamma samsung anno 2019</font></br>
+								<ul>
+									<li>Display 6,1" QHD+ / 1440 x 3040 px</li><li>Fotocamera 12 Mpx ƒ/1.5-2.4</li>
+									<li>Memoria interna 512 GB</li>
+								</ul><font id="testo"></font></br>Prezzo originale: 999€</br>Prezzo al 70%: <font size="5" id="prezzo"><b>299€</b></font></br></br><font id="samsung">
+								<input type="button" value="aggiungi al carrello" onclick="creacarrello(1)"/></font>
+							</td>
+						</tr>
+						<tr align="center">
+							<td align="left"><img src="aspirapolvere.png" width="290" hspace="15" align="left"/><font size="5"><b>Aspirapolvere Electrolux:</b></font></br>
+								<font size="4">Ultimo modello top di gamma edizione 2019 di casa electrolux</font></br></br>
+								<ul>
+									<li>Tecnologia ciclonica per la pulizia di tutte le superfici</li><li>2 posizioni di parcheggio</li>
+									<li>2 Settaggi della velocità</li>
+								</ul></br>Prezzo originale: 499€</br>Prezzo al 50%: <font size="5"><b>249€</b></font></br></br>
+								<input type="button" value="aggiungi al carrello" onclick="creacarrello(2)"/>
+							</td>
+							<td align="left"><img src="bose.png" width="290" hspace="15" align="left"/><font size="5"><b>Bose speaker:</b></font></br>
+								<font size="4">Speaker di altissima qualità con bassi strepitosi</font></br></br>
+								<ul>
+									<li>Connetività con più di 3 dispositivi contemporaneamente</li><li>Bassi profondi e alti cristallini</li><li>app disponibile per ios e android</li>
+								</ul>
+								<font id="conta"></font></br>Prezzo originale: 199€</br>Prezzo al 80%: <font size="5" id="fine"><b>39€</b></br></br><font id="bose">
+								<input type="button" value="aggiungi al carrello" onclick="creacarrello(3)"/></font></font> 
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<table height="100%" width="100%" align="center" border="0">
+									<tr align="center">
+										<td id="sinistra">
+											<img width="120" src="bose.png"/>
+										</td>
+										<td id="centro">
+											<img width="120" src="fotocamera.png"/>
+										</td>				
+										<td id="centro2">
+											<img width="120" src="microfono.png"/>
+										</td>
+										<td id="destra">
+											<img width="120" src="minecraft.png" />
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="5%" valign="top" align="left">
+					<font size="4"><b>Carrello:</b></font></br><font id="tot">Totale=0</font><font id="carrello"></font>
+				</td>
+			</tr>
+			<tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			</tr>
+			<tr align="center">
+				<td colspan="3" height="3%">
+					Telefono: +39.333 3333333 dalle 8.30 alle 12.30 e dalle 14.30 alle 18.30 - dal lunedi al venerdi, sede centrale: Via Settembrini, MI E-mail:  e-commerce@gmail.com
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

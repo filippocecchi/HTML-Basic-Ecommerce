@@ -1,0 +1,410 @@
+<html>
+	<head>
+	<script>
+	function verifica()
+	{
+	    var cont=0;
+		var user=document.getElementById("user").value;
+		var pass=document.getElementById("pass").value;
+		var indirizzo=document.getElementById("indirizzo").value;
+		var nome=document.getElementById("nome").value;
+		var cognome=document.getElementById("cognome").value;
+		var cc=document.getElementById("cc").value;
+		var sc=document.getElementById("sc").value;
+		var chiave=document.getElementById("chiave").value;
+		if(user.length==0||pass.length==0||indirizzo.length==0||nome.length==0||cognome.length==0||dn.length==0||cc.length==0||sc.length==0||chiave.length==0)
+		{
+			alert("Devi riempire tutti i campi");
+			return;
+		}
+		if(user==pass)
+		{
+			alert("Username e password non possono essere uguali");
+			return;
+		}
+		if(user.length<7)
+		{
+			alert("Username deve avere almeno 7 caratteri");
+			return;
+		}
+		if(pass.length<7)
+		{
+			alert("password deve avere almeno 7 caratteri");
+			return;
+		}
+		for(var i=0;i<pass.length;i++)
+		{
+			if(pass[i]==".")
+				cont=cont+1;
+		}
+		if(cont==0)
+		{
+			alert("La password deve avere almeno 1 punto");
+			return;
+		}
+		if(cc.length!=19)
+		{
+			alert("Il codice della carta deve avere 19 caratteri. inseriti "+cc.length+" su 19");
+			return;
+		}
+		if(sc.length!=5)
+		{
+			alert("Scrivi la data di scadenza in questa forma: 01/20");
+			return;
+		}
+		if(chiave.length!=3)
+		{
+			alert("Il codice di sicurezza deve avere 3 caratteri");
+			return;
+		}
+		document.getElementById("fine").submit(); 
+	}
+	function vedi(val)
+	{
+		if(val==0)
+		{
+			document.getElementById("imm").innerHTML="<img src='hidden.png' width='40' align='center' onclick='vedi(1)'/>";
+			document.getElementById("pass").type="text";
+		}
+		else
+		{
+			document.getElementById("imm").innerHTML="<img src='hidden.png' width='40' align='center' onclick='vedi(0)'/>";
+			document.getElementById("pass").type="password";
+		}
+	}
+	function colora(num)
+	{
+		if(num==1)
+		{
+			document.getElementById("1").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("2").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("3").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("4").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("5").innerHTML="<img src='stella grigia.png' width='90'/>";
+		}
+		if(num==2)
+		{
+			document.getElementById("1").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("2").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("3").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("4").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("5").innerHTML="<img src='stella grigia.png' width='90'/>";
+		}
+		if(num==3)
+		{
+			document.getElementById("1").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("2").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("3").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("4").innerHTML="<img src='stella grigia.png' width='90'/>";
+			document.getElementById("5").innerHTML="<img src='stella grigia.png' width='90'/>";
+		}
+		if(num==4)
+		{
+			document.getElementById("1").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("2").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("3").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("4").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("5").innerHTML="<img src='stella grigia.png' width='90'/>";
+		}
+		if(num==5)
+		{
+			document.getElementById("1").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("2").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("3").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("4").innerHTML="<img src='stella gialla.png' width='90'/>";
+			document.getElementById("5").innerHTML="<img src='stella gialla.png' width='90'/>";
+		}
+	}
+	var z;
+	function inizia()
+	{
+		var t="",t2="";
+		for(var i=0;i<7;i++)
+		{
+			t=t+"<tr>";
+			for(var j=0;j<5;j++)
+			{
+				t=t+"<td id='"+i+"_"+j+"'></td>";
+			}
+			t=t+"</tr>";
+		}
+		for(var i=0;i<7;i++)
+		{
+			t2=t2+"<tr>";
+			for(var j=0;j<5;j++)
+			{
+				t2=t2+"<td id='"+i+"-"+j+"'></td>";
+			}
+			t2=t2+"</tr>";
+		}
+		document.getElementById("tab").innerHTML=t;
+		document.getElementById("tab2").innerHTML=t2;
+		clearInterval(z);
+		setInterval(lampeggia,700);
+		setInterval(lampeggiaalto,700);
+	}
+	z=setInterval(inizia,1);
+	var colorati=0;
+	function lampeggia()
+	{
+		if(colorati==0)
+		{
+			document.getElementById("0_1").bgColor="red";
+			document.getElementById("0_2").bgColor="red";
+			document.getElementById("0_3").bgColor="red";
+			colorati=3;
+			return;
+		}
+		if(colorati==3)
+		{
+			document.getElementById("1_1").bgColor="red";
+			document.getElementById("1_2").bgColor="red";
+			document.getElementById("1_3").bgColor="red";
+			colorati=6;
+			return;
+		}
+		if(colorati==6)
+		{
+			document.getElementById("2_1").bgColor="red";
+			document.getElementById("2_2").bgColor="red";
+			document.getElementById("2_3").bgColor="red";
+			colorati=9;
+			return;
+		}
+		if(colorati==9)
+		{
+			document.getElementById("3_1").bgColor="red";
+			document.getElementById("3_2").bgColor="red";
+			document.getElementById("3_3").bgColor="red";
+			colorati=12;
+			return;
+		}
+		if(colorati==12)
+		{
+			document.getElementById("4_1").bgColor="red";
+			document.getElementById("4_2").bgColor="red";
+			document.getElementById("4_3").bgColor="red";
+			document.getElementById("4_4").bgColor="red";
+			document.getElementById("4_0").bgColor="red";
+			colorati=17;
+			return;
+		}
+		if(colorati==17)
+		{
+			document.getElementById("5_1").bgColor="red";
+			document.getElementById("5_2").bgColor="red";
+			document.getElementById("5_3").bgColor="red";
+			colorati=20;
+			return;
+		}
+		if(colorati==20)
+		{
+			document.getElementById("6_2").bgColor="red";
+			colorati=21;
+			return;
+		}
+		if(colorati==21)
+		{
+			for(var i=0;i<7;i++)
+			{
+				for(var j=0;j<5;j++)
+				{
+					document.getElementById(""+i+"_"+j+"").bgColor="";
+				}
+			}
+			colorati=0;
+			return;
+		}
+	}
+	var colorati2=0;
+	function lampeggiaalto()
+	{
+		if(colorati2==0)
+		{
+			document.getElementById("6-1").bgColor="red";
+			document.getElementById("6-2").bgColor="red";
+			document.getElementById("6-3").bgColor="red";
+			colorati2=3;
+			return;
+		}
+		if(colorati2==3)
+		{
+			document.getElementById("5-1").bgColor="red";
+			document.getElementById("5-2").bgColor="red";
+			document.getElementById("5-3").bgColor="red";
+			colorati2=6;
+			return;
+		}
+		if(colorati2==6)
+		{
+			document.getElementById("4-1").bgColor="red";
+			document.getElementById("4-2").bgColor="red";
+			document.getElementById("4-3").bgColor="red";
+			colorati2=9;
+			return;
+		}
+		if(colorati2==9)
+		{
+			document.getElementById("3-1").bgColor="red";
+			document.getElementById("3-2").bgColor="red";
+			document.getElementById("3-3").bgColor="red";
+			colorati2=12;
+			return;
+		}
+		if(colorati2==12)
+		{
+			document.getElementById("2-0").bgColor="red";
+			document.getElementById("2-1").bgColor="red";
+			document.getElementById("2-2").bgColor="red";
+			document.getElementById("2-3").bgColor="red";
+			document.getElementById("2-4").bgColor="red";
+			colorati2=17;
+			return;
+		}
+		if(colorati2==17)
+		{
+			document.getElementById("1-1").bgColor="red";
+			document.getElementById("1-2").bgColor="red";
+			document.getElementById("1-3").bgColor="red";
+			colorati2=20;
+			return;
+		}
+		if(colorati2==20)
+		{
+			document.getElementById("0-2").bgColor="red";
+			colorati2=21;
+			return;
+		}
+		if(colorati2==21)
+		{
+			for(var i=0;i<7;i++)
+			{
+				for(var j=0;j<5;j++)
+				{
+					document.getElementById(""+i+"-"+j+"").bgColor="";
+				}
+			}
+			colorati2=0;
+			return;
+		}
+	}
+	</script>
+	</head>
+	<title>E-commerce</title>
+	<body background="sfondo chiaro.jpg" link="black" vlink="black">
+		<table align="center" width="100%" height="130%"border="1">
+			 <tr align="center" height="10%">
+				<td><img src="online-shop.png" width="130"/></td>
+				<td><img src="index.png" width="400"/></td>
+				<td><a href="form.html"><img src="images.png" width="100" title="Acquista"/></a></td>
+			 </tr>
+			 <tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			 </tr>
+			 <tr align="center">
+				<td width="5%" align="left"valign="top"></br></br>
+					<h3><font face="verdana">Menù</font></h3><hr width="50%">
+					<ul type="disc">
+						<li><a href="Homepage.html">Homepage</a></li>
+						<li><a href="chisiamo.html">Chi siamo</a></li>
+						<li><a href="offertespeciali.html">Offerte speciali</a></li>
+						<li><a href="form.html">Acquista</a></li>
+					</ul>
+				</td>
+				<td width="70%" align="center">
+					<table width="100%" height="100%" border="0"> 
+						<tr align="center" height="80">
+							<td colspan="3"><font size="7"><b>Procedi all'acquisto</b></font></td>
+						</tr>
+						<tr>
+							<td width="50%" valign="top"><font size="5"><b>Per confermare l'acquisto inserire i dati e premere il tasto acquista:</b></font></br>
+								<table>
+									<form action="nonfatemi.php" id="fine" method="post">
+									<tr>
+										<td><font size="5">username:</font></td>
+										<td><input type="text" name="user"id="user"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">password:</font></td>
+										<td><input type="password"name="pass"id="pass"><font id="imm"><img src="hidden.png" width="40" align="center" onclick="vedi(0)"/></font></td>
+									</tr>
+									<tr>
+										<td><font size="5">indirizzo:</font></td>
+										<td><input type="text" name="indirizzo"id="indirizzo"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">nome:</font></td>
+										<td><input type="text" name="nome" id="nome"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">cognome:</font></td>
+										<td><input type="text" name="cognome" id="cognome"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">data di nascita:</font></td>
+										<td><input type="date" name="dn"id="dn"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">codice carta:</font></td>
+										<td><input type="text" name="cc"id="cc"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">scadenza carta:</font></td>
+										<td><input type="text" name="sc"id="sc"/></td>
+									</tr>
+									<tr>
+										<td><font size="5">chiave sicurezza:</font></td>
+										<td><input type="text" name="chiave"id="chiave"/></td>
+									</tr>
+								</table>
+								<font size="5">scegli modalità consegna</font><font size="3">(le modalità rapide possono prevedere costi aggiuntivi):</font></br>
+								<input type="radio" name="consegna"value="normale"/><font size="4"> Normale</font></br>
+								<input type="radio" name="consegna"value="rapida"/><font size="4"> Rapida</font></br>
+								<input type="radio" name="consegna"value="2 ore"/> <font size="4">2 ore</font></br></br>
+								<p align="center"><img src="consegna.png" width="800"/></p></form>
+								<input type="button" value="acquista" onclick="verifica();"/> 
+								</font>
+							</td>
+							<td width="1" bgcolor="black"></td>
+							<td width="50%" valign="top"><font size="5"><b>Valuta il nostro servizio:</b></font></br>
+								<font id="1"><img src="stella grigia.png" onclick="colora(1)" width="90"/></font>
+								<font id="2"><img src="stella grigia.png" onclick="colora(2)" width="90"/></font>
+								<font id="3"><img src="stella grigia.png" onclick="colora(3)" width="90"/></font>
+								<font id="4"><img src="stella grigia.png" onclick="colora(4)" width="90"/></font>
+								<font id="5"><img src="stella grigia.png" onclick="colora(5)" width="90"/></font>
+								</br></br>
+								<p align="center"><img src="pacchi.png"/></p>
+								<p align="center"><img src="pacchi2.jpg" border="1"/></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="5%" valign="top" align="center"></br></br>
+					<table width="100%" height="480">
+						<tr>
+							<td>
+								<table id="tab" width="100%" height="150" border="0" cellspacing="0">					
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td><a href="offertespeciali.html"><p align="center"><font size="6"><b>Torna ad </br>acquistare</b></font></p></a></td>
+						</tr>
+						<tr>
+							<td>
+								<table id="tab2" width="100%" height="150" border="0" cellspacing="0">					
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr align="center"height="0.5%">
+				<td colspan="3"bgcolor="black"></td>
+			</tr>
+			<tr align="center">
+				<td colspan="3" height="3%">Telefono: +39.333 3333333 dalle 8.30 alle 12.30 e dalle 14.30 alle 18.30 - dal lunedi al venerdi, sede centrale: Via Settembrini, MI E-mail:  e-commerce@gmail.com</td>
+			</tr>
+		</table>
+	</body>
+</html>

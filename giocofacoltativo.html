@@ -1,0 +1,151 @@
+<html>
+	<head>       
+		<script>
+		var t="",x;
+		function creatabella()
+		{
+			for(var i=0;i<6;i++)
+				{
+					t=t+"<tr>";
+					for(var j=0;j<6;j++)
+					{
+						t=t+"<td id='"+i+"_"+j+"'><img src='vuoto.png' width='100%'/></td>";
+					}
+					t=t+"</tr>";
+				}
+			clearInterval(x);
+			document.getElementById("tabella").innerHTML=""+t+"";
+		}
+		x=setInterval(creatabella,1);
+		var flag=0,a;
+		function inizia()
+		{
+			if(flag==0)
+			{
+				a=setInterval(gioca,1562);
+				flag=1;
+			}
+		}
+		var secondi=0,v;
+		function gioca()
+		{
+			var orizzontalea1=Math.floor(Math.random()*6);
+			var orizzontalea2=Math.floor(Math.random()*6);
+			var orizzontalea3=Math.floor(Math.random()*6);
+			var orizzontaleu1=Math.floor(Math.random()*6);
+			var orizzontaleu2=Math.floor(Math.random()*6);
+		    var verticalea1=Math.floor(Math.random()*6);
+			var verticalea2=Math.floor(Math.random()*6);
+			var verticalea3=Math.floor(Math.random()*6);
+			var verticaleu1=Math.floor(Math.random()*6);
+			var verticaleu2=Math.floor(Math.random()*6);
+			var vuoto="<img src='vuoto.png' width='100%' onclick='punteggio(2,-3,-3)'/>";
+			for(var i=0;i<6;i++)
+			{
+				for(var j=0;j<6;j++)
+				{
+					document.getElementById(""+i+"_"+j+"").innerHTML=""+vuoto+"";
+					
+				}
+			}
+			while(orizzontalea1+"_"+verticalea1==orizzontaleu1+"_"+verticaleu1||orizzontalea1+"_"+verticalea1==orizzontalea2+"_"+verticalea2||orizzontalea2+"_"+verticalea2==orizzontaleu1+"_"+verticaleu1||orizzontalea1+"_"+verticalea1==orizzontaleu2+"_"+verticaleu2||orizzontalea2+"_"+verticalea2==orizzontaleu2+"_"+verticaleu2||orizzontaleu2+"_"+verticaleu2==orizzontaleu1+"_"+verticaleu1||orizzontalea1+"_"+verticalea1==orizzontalea3+"_"+verticalea3||orizzontalea2+"_"+verticalea2==orizzontalea3+"_"+verticalea3||orizzontalea3+"_"+verticalea3==orizzontaleu1+"_"+verticaleu1||orizzontalea3+"_"+verticalea3==orizzontaleu2+"_"+verticaleu2)
+			{
+				orizzontalea1=Math.floor(Math.random()*6);
+				verticalea1=Math.floor(Math.random()*6);
+				orizzontaleu1=Math.floor(Math.random()*6);
+				verticaleu1=Math.floor(Math.random()*6);
+				orizzontalea2=Math.floor(Math.random()*6);
+				verticalea2=Math.floor(Math.random()*6);
+				orizzontaleu2=Math.floor(Math.random()*6);
+				verticaleu2=Math.floor(Math.random()*6);
+				orizzontalea3=Math.floor(Math.random()*6);
+				verticalea3=Math.floor(Math.random()*6);
+			}
+			var alieno1="<img src='alieno.png' width='100%' onclick='punteggio(0,"+orizzontalea1+","+verticalea1+")'/>",alieno2="<img src='alieno.png' width='100%' onclick='punteggio(0,"+orizzontalea2+","+verticalea2+")'/>",alieno3="<img src='alieno.png' width='100%' onclick='punteggio(0,"+orizzontalea3+","+verticalea3+")'/>";
+			var umano1="<img src='umano.png' width='100%' onclick='punteggio(1,"+orizzontaleu1+","+verticaleu1+")'/>",umano2="<img src='umano.png' width='100%' onclick='punteggio(1,"+orizzontaleu2+","+verticaleu2+")'/>";
+			if(secondi<5)
+			{
+				document.getElementById(""+orizzontalea1+"_"+verticalea1+"").innerHTML=""+alieno1+"";
+			}
+			if(secondi>=5&&secondi<10)
+			{	
+				document.getElementById(""+orizzontalea1+"_"+verticalea1+"").innerHTML=""+alieno1+"";
+				document.getElementById(""+orizzontaleu1+"_"+verticaleu1+"").innerHTML=""+umano1+"";
+			}
+			if(secondi>=10&&secondi<15)
+			{
+				document.getElementById(""+orizzontalea1+"_"+verticalea1+"").innerHTML=""+alieno1+"";
+				document.getElementById(""+orizzontalea2+"_"+verticalea2+"").innerHTML=""+alieno2+"";
+				document.getElementById(""+orizzontaleu1+"_"+verticaleu1+"").innerHTML=""+umano1+"";
+			}
+			if(secondi>=15&&secondi<21)
+			{
+				document.getElementById(""+orizzontalea1+"_"+verticalea1+"").innerHTML=""+alieno1+"";
+				document.getElementById(""+orizzontalea2+"_"+verticalea2+"").innerHTML=""+alieno2+"";
+				document.getElementById(""+orizzontaleu1+"_"+verticaleu1+"").innerHTML=""+umano1+"";
+				document.getElementById(""+orizzontaleu2+"_"+verticaleu2+"").innerHTML=""+umano2+"";
+			}
+			if(secondi>=21)
+			{
+				document.getElementById(""+orizzontalea1+"_"+verticalea1+"").innerHTML=""+alieno1+"";
+				document.getElementById(""+orizzontalea2+"_"+verticalea2+"").innerHTML=""+alieno2+"";
+				document.getElementById(""+orizzontalea3+"_"+verticalea3+"").innerHTML=""+alieno3+"";
+				document.getElementById(""+orizzontaleu1+"_"+verticaleu1+"").innerHTML=""+umano1+"";
+				document.getElementById(""+orizzontaleu2+"_"+verticaleu2+"").innerHTML=""+umano2+"";
+			}
+			secondi=secondi+1;
+			if(secondi==28)
+			{
+				clearInterval(a);
+				document.getElementById("tabella").innerHTML="<tr><td><img src='end.jpg' width='100%'/></td></tr>";
+				v=setInterval(punteggio,1);
+			}
+		}
+		var positivi=0,extraterrestre=0,u=0,b=0;
+		function punteggio(val,orizzontale,verticale)
+		{
+			var bang="<img src='bang.png'width='100%'/>",ouch="<img src='ouch.png'width='98%'/>";
+			if(val==0)
+			{
+				document.getElementById(""+orizzontale+"_"+verticale+"").innerHTML=""+bang+"";
+				positivi=positivi+1;
+				extraterrestre=extraterrestre+1;
+			}
+			if(val==1)
+			{
+				document.getElementById(""+orizzontale+"_"+verticale+"").innerHTML=""+ouch+"";
+				positivi=positivi-2;
+				u=u+1;
+			}
+			if(val==2)
+			{
+				positivi=positivi-1;
+				b=b+1;
+			}
+			if(secondi==28)
+			{
+				if(positivi>=36)
+				{
+					clearInterval(v);
+					document.getElementById("tab").innerHTML="<p align='center'><font size='7' face='verdana'>COMPLIMENTI</font><font size='5' face='verdana'></br>Hai ottenuto un buono sconto di 20€ per i futuri acquisti, con un punteggio totale di "+positivi+" su 50</br>Alieni:"+extraterrestre+" su 50 Umani:"+u+" su 34 Vuoti:"+b+"</br><a href='offertespeciali.html'>Torna alle offerte</a></font></p>";
+				}
+				else
+				{
+					clearInterval(v);
+					document.getElementById("tab").innerHTML="<p align='center'><font size='7' face='verdana'>PECCATO</font><font size='5' face='verdana'></br>Non hai ottenuto un buono sconto di 20€ per i futuri acquisti, il tuo punteggio è di "+positivi+" su 50</br>Alieni:"+extraterrestre+" su 50 Umani:"+u+" su 34 Vuoti:"+b+"</br><a href='offertespeciali.html'>Torna alle offerte</a></font></p>";
+				}
+			}
+		}
+		</script>
+	</head>
+	<body background="cielo.jpg" text="white" vlink="white" link="white">
+		<font size="7" face="verdana"><b>COLPISCI L'ALIENO</b></font></br>
+			<table id="tabella" width="27%" height="50%" align="center" border="1"></table></br></br>
+			<table align="center" border="0" width="70%" id="tab">
+				<tr>
+					<td width="400"><img src="start.png" width="400" onclick="inizia()"/></td>
+					<td valign="top" align="justify"><font size="5" face="verdana"><b>Regole del gioco:</b></font></br><font size="5" face="verdana">Il gioco consiste nel cliccare sui 50 alieni prima che essi scompaiano ed evitare di cliccare sopra gli umani. Il gioco ha una durata di 28 secondi dopodiché sarà assegnato un punteggio in base al numero di alieni colpiti. Colpire un umano o colpire il vuoto comporterà delle penalità nel punteggio finale rispettivamente di meno 2 e meno 1. Se il tuo punteggio supera 35 riceverai un buono di 20€ per gli acquisti futuri.</font></td>
+				</tr>
+			</table>
+	</body>
+</html>
